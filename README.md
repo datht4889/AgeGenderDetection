@@ -77,7 +77,7 @@ After training the model, we can make prediction for an image by forwarding the 
     ```
 2. Load model
     ```expression_model = ResNet18()
-    optimizer = torch.optim.SGD(expression_model.parameters(), lr=0.3, momentum=0.9, weight_decay=1e-4, nesterov=True)
+    optimizer = torch.optim.Adam(expression_model.parameters(), lr=0.3, momentum=0.9, weight_decay=1e-4)
 
     expression_model, optimizer = load_model(expression_model, optimizer, "FaceEmote/pretrained/Express_model_final.pth")
     ```
