@@ -19,7 +19,7 @@ from FaceEmote.predict import predict as emote_predict, load_model
 from FaceRecog.predict import predict as age_gender_predict
 
 expression_model = ResNet18()
-optimizer = torch.optim.SGD(expression_model.parameters(), lr=0.3, momentum=0.9, weight_decay=1e-4, nesterov=True)
+optimizer = torch.optim.Adam(expression_model.parameters(), lr=0.3, weight_decay=1e-4)
 
 expression_model, optimizer = load_model(expression_model, optimizer, "FaceEmote/pretrained/Express_model_final.pth")
 
