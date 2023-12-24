@@ -8,10 +8,10 @@ import numpy as np
 # Detect Model
 from ultralytics import YOLO
 
-faceNet=YOLO('FaceDetect/best.pt')
+faceNet=YOLO('FaceDetection/pretrained/best.pt')
 
 # Age-Gender Model
-agegenderModel = tf.keras.models.load_model(r"FaceRecog/pretrained/agegender_Lib50_100epoch.h5")
+agegenderModel = tf.keras.models.load_model(r"FaceRecog/pretrained/agegender18.h5")
 
 # Expression model:
 from FaceEmote.model import ResNet18
