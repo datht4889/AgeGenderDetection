@@ -11,17 +11,17 @@ from ultralytics import YOLO
 faceNet=YOLO('FaceDetection/pretrained/best.pt')
 
 # Age-Gender Model
-agegenderModel = tf.keras.models.load_model(r"FaceRecog/pretrained/agegender34.h5")
+agegenderModel = tf.keras.models.load_model(r"AgeGenderRecognition/pretrained/agegender34.h5")
 
 # Expression model:
-from FaceEmote.model import ResNet18
-from FaceEmote.predict import predict as emote_predict, load_model
-from FaceRecog.predict import predict as age_gender_predict
+from FaceEmoteRecognition.model.resnet.model import ResNet18
+from FaceEmoteRecognition.model.resnet.predict import predict as emote_predict, load_model
+from AgeGenderRecognition.model.resnet.predict import predict as age_gender_predict
 
 expression_model = ResNet18()
 optimizer = torch.optim.Adam(expression_model.parameters(), lr=0.3, weight_decay=1e-4)
 
-expression_model, optimizer = load_model(expression_model, optimizer, "FaceEmote/pretrained/Express_model_final.pth")
+expression_model, optimizer = load_model(expression_model, optimizer, "FaceEmoteRecognition/pretrained/emote_model.pth")
 
 
 
@@ -41,8 +41,7 @@ def get_face(faceNet, frame, img_resize = (224,224)):
 
 
 # define a video capture object
-# vid = cv2.VideoCapture(0)
-vid = cv2.VideoCapture('data_test/vu.jpg')
+vid = cv2.VideoCapture(0)
 vid.set(cv2.CAP_PROP_FRAME_WIDTH, 1920)
 
 while(True):
@@ -61,17 +60,15 @@ while(True):
                 # if int(time.time())%3==0:
                 emote_prediction = emote_predict(faceLoad[i], expression_model)
                 pred_gender, pred_age, pred_age_cat = age_gender_predict(faceImg, agegenderModel)
-                
+                    
                 cv2.putText(frame, f'Gender: {pred_gender}', (x, y+20*0), cv2.FONT_HERSHEY_TRIPLEX, 0.4, (255,255,255), 1, cv2.LINE_AA)
                 cv2.putText(frame, f'Age: {pred_age}', (x, y+20*1), cv2.FONT_HERSHEY_TRIPLEX, 0.4, (255,255,255), 1, cv2.LINE_AA)
                 cv2.putText(frame, f'Age Group: {pred_age_cat}', (x, y+20*2), cv2.FONT_HERSHEY_TRIPLEX, 0.4, (255,255,255), 1, cv2.LINE_AA)
-                # cv2.putText(frame, f'Ethnic: {pred_ethnic}', (x, y+20*3), cv2.FONT_HERSHEY_TRIPLEX, 0.4, (255,255,255), 1, cv2.LINE_AA)
                 
                 cv2.putText(frame, f'Mood: {emote_prediction}', (x,y+100+20), cv2.FONT_HERSHEY_TRIPLEX, 0.5, (255, 255, 255))
 
 
         cv2.imshow('frame',frame)
-        # cv2.imwrite('pred_img.jpeg', frame)
 
     if cv2.waitKey(100) & 0xFF == ord('q'):
         break

@@ -43,7 +43,7 @@ After training the model, we can make prediction for an image by forwarding the 
 
 # Train Facial Emote Recognition Model
 ## Train, valid, test split
-We use 80% data for training, 10% for validation and 10% for testing.
+We use 28,709 training images for training, 3589 public test images for validation and 3589 private test images for testing.
 ## Preprocessing
 We transform data through the pipeline of transformation as we mention in the report (Section 3.2) 
 and build the dataloader for train datasets, valid datasets and test datasets.
