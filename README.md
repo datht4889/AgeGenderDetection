@@ -13,7 +13,7 @@ and build train datasets and test datasets.
 • Learning rate: 0.0003\
 • Batch size: 32\
 • Number of Epochs: 150	\
-• Optim	izer: Adam\
+• Optim	izer: Adam
 3. We will save model parameters checkpoint each times we have the better validation loss.
 ## Evaluation:
 The model's performance is assessed using the following metrics:
