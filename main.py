@@ -11,7 +11,7 @@ from ultralytics import YOLO
 faceNet=YOLO('FaceDetection/pretrained/best.pt')
 
 # Age-Gender Model
-agegenderModel = tf.keras.models.load_model(r"FaceRecog/pretrained/agegender18.h5")
+agegenderModel = tf.keras.models.load_model(r"FaceRecog/pretrained/agegender34.h5")
 
 # Expression model:
 from FaceEmote.model import ResNet18
