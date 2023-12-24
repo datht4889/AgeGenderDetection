@@ -142,3 +142,5 @@ Ultralytics evaluate automatically the performance of the model. All you need to
 
 # Checkpoint
 All checkpoints are saved at https://drive.google.com/drive/u/0/folders/1OIZZL7P-rIghrqzWOKJDQeqUrX_g9HHu
+
+You can download checkpoints and save them in corresponding 'pretrained' folder.
