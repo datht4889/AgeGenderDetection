@@ -7,7 +7,7 @@ torch==2.1.2
 torchvision==0.16.2
 wandb==0.16.1
 ultralytics==8.0.229
-tensorflow==2.15.0.post1
+tensorflow==2.15.0
 
 # Testing
 tqdm==4.66.1
