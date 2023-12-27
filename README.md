@@ -99,9 +99,9 @@ Because of the YOLOv5 requirement, we resize images to 640x640.
 ## Training and Evaluating
 We create a config.yaml file to specify our configuration. The content of config.yaml:\
 \# Train/val/test sets \
-train: '/kaggle/working/images/train'\
-val: '/kaggle/working/images/valid'\
-test: '/kaggle/working/images/test'\
+train: train_data_path\
+val: valid_data_path\
+test: test_data_path(optional)\
 \
 \# Classes\
 names:\
@@ -124,6 +124,7 @@ Then train model by
 ```
 results=model.train(data=config_path, epochs=100, resume=True, iou=0.5, conf=0.001,save=True)
 ```
+config_path is the path to the config.yaml file
 ## Infer
 After training the model, we can make prediction for an image by forwarding the image into model and extract the bounding boxes from the results
 ```
