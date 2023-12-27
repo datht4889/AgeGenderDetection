@@ -144,3 +144,22 @@ Ultralytics evaluate automatically the performance of the model. All you need to
 All checkpoints are saved at https://drive.google.com/drive/u/0/folders/1OIZZL7P-rIghrqzWOKJDQeqUrX_g9HHu
 
 You can download checkpoints and save them in corresponding 'pretrained' folder.
+
+# Run our code
+Clone our respository
+
+```
+git clone https://github.com/datht4889/Face-Recognition
+```
+
+Install requirements
+
+```
+pip install -r requirements.txt
+```
+
+Run our code with your webcam
+
+```
+python3 main.py
+```
